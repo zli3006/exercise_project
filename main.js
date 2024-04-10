@@ -1,55 +1,49 @@
-var host = "cpsc484-01.stdusr.yale.internal:8888";
-
+// main.js
 $(document).ready(function () {
-    frames.start();
-});
+    var host = "cpsc484-01.stdusr.yale.internal:8888";
+    var timeLeft = 30;
+    var exerciseStarted = false;
 
-var frames = {
-    socket: null,
-
-    start: function () {
-        var url = "ws://" + host + "/frames";
-        frames.socket = new WebSocket(url);
-        frames.socket.onmessage = function (event) {
-            frames.show(JSON.parse(event.data));
+    $("#startButton").click(function () {
+        if (!exerciseStarted) {
+            startExercise();
+            exerciseStarted = true;
+            $(this).hide();
+            $('.exercise').show();
         }
-    },
+    });
 
-    show: function (frame) {
-        console.log(frame);
-         if (frame.people.length > 0) {
-            let person_r_eye = frame.people[0].joints[30].position.y
-            let person_r_hand = frame.people[0].joints[15].position.y
-            let person_l_hand = frame.people[0].joints[8].position.y
-            let right_distance = person_r_hand - person_r_eye
-            let left_distance = person_l_hand - person_r_eye
-            let raised = (right_distance > 0) && (left_distance > 0)
-        }
+    function startExercise() {
+        var timerId = setInterval(function() {
+            if (timeLeft == -1) {
+                clearTimeout(timerId);
+                endExercise();
+            } else {
+                $('#timer').text(timeLeft + ' seconds remaining');
+                timeLeft--;
+            }
+        }, 1000);
+
+        initWebSocket();
     }
-};
 
-$(document).ready(function() {
-  twod.start();
+    function endExercise() {
+        $('#exerciseTitle').text("Well done!");
+        $('#timer').text("Exercise complete.");
+    }
+
+    function initWebSocket() {
+        var framesSocket = new WebSocket("ws://" + host + "/frames");
+        var twodSocket = new WebSocket("ws://" + host + "/twod");
+
+        framesSocket.onmessage = function (event) {
+            var data = JSON.parse(event.data);
+            // Logic to evaluate exercise performance goes here
+        };
+
+        twodSocket.onmessage = function (event) {
+            var data = JSON.parse(event.data);
+            $('img.twod').attr("src", 'data:image/jpeg;base64,' + data.src);
+        };
+    }
 });
-
-var twod = {
-    socket: null,
-
-    // create a connection to the camera feed
-    start: function () {
-        var url = "ws://" + host + "/twod";
-        twod.socket = new WebSocket(url);
-
-        // whenever a new frame is received...
-        twod.socket.onmessage = function (event) {
-
-            // parse and show the raw data
-            twod.show(JSON.parse(event.data));
-        }
-    },
-
-    // show the image by adjusting the source attribute of the HTML img object previously created
-    show: function (twod) {
-        $('img.twod').attr("src", 'data:image/pnjpegg;base64,' + twod.src);
-    },
-};
