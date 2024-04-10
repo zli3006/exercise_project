@@ -17,21 +17,20 @@
       <!-- Display the countdown timer in an element -->
       <div class="exercise">
         <h2>Stretch 1: Raise your arms and hold.</h2>
-        <h2 id="demo"></h2>
+        <h2 id="timer"></h2>
       </div>
      
       <script>
-      var timeLeft = 30;
-      var elem = document.getElementById('demo');
-      var timerId = setInterval(countdown, 1000);
+      var seconds = 15;
+      var timeElement = document.getElementById('timer');
+      var inter = setInterval(countdown, 1000);
 
-      function countdown() {
-          if (timeLeft == -1) {
-              clearTimeout(timerId);
-              doSomething();
+      function timer() {
+          if (seconds >= 0) {
+              clearTimeout(inter);
           } else {
-              elem.innerHTML = timeLeft + ' seconds remaining';
-              timeLeft--;
+              timeElement.innerHTML = seconds + ' seconds remaining';
+              seconds--;
           }
       }
       </script>
