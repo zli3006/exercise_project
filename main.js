@@ -37,6 +37,14 @@ var twod = {
 
             // parse and show the raw data
             twod.show(JSON.parse(event.data));
+            if (data.people) {
+                let person_r_shoulder = data.people[0].joint[12].position.y
+                let person_l_shoulder = data.people[0].joint[5].position.y
+                let person_r_hand = data.people[0].joint[15].position.y
+                let person_l_hand = data.people[0].joint[8].position.y
+                let right_distance = person_r_hand - person_r_shoulder
+                let left_distance = person_l_hand - person_l_shoulder
+            }
         }
     },
 
