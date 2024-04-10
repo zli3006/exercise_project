@@ -12,6 +12,7 @@ var frames = {
         frames.socket = new WebSocket(url);
         frames.socket.onmessage = function (event) {
             frames.show(JSON.parse(event.data));
+            // test change
         }
     },
 
