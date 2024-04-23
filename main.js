@@ -20,7 +20,7 @@ $(document).ready(function () {
         option = option % 4
         switch (option) {
             case 0:
-                text = "Stretch 1: Raise your arms and hold."
+                text = "Stretch 1: Raise your arms above your head and hold."
                 break;
             case 1:
                 text = "Stretch 2"
