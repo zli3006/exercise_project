@@ -9,14 +9,21 @@
     <div class="introduction">
         <h1>Stretching Challenge!</h1>
     </div>
-    <div class="exercise">
-        <h2 id="exerciseTitle"></h2>
-        <h2 id="timer"></h2>
-    </div>
-    <div class="view">
-        <img class="twod" alt="User's silhouette"/>
-    </div>
+    <h2 id="exerciseTitle">Raise your hands to start.</h2>
+    <h2 id="timer">10 seconds remaining</h2>
     <script src="main.js" type="text/javascript"></script>
-    
+    <script>
+        var timeLeft = 10
+        var timerId = setInterval(function() {
+            if (timeLeft == -1) {
+                timeLeft = 10
+                $('#exerciseTitle').text("Raise your hands to start.");
+                $('#timer').hide();
+            } else {
+                $('#timer').text(timeLeft + ' seconds remaining');
+                timeLeft--;
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
