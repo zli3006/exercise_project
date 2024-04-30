@@ -1,16 +1,9 @@
 /* Reset default styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Global styles */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #30D5C8;
+    color: #9B108B;
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 /* Header styles */
@@ -18,82 +11,19 @@ header {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 20px;
 }
 
 h1 {
-    font-size: 32px;
-    margin-bottom: 10px;
-}
-
-/* Main content styles */
-main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-section {
-    margin-bottom: 30px;
+    font-size: 72px;
 }
 
 h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #555;
-}
-
-/* Exercise section styles */
-.exercise {
-    display: none;
-}
-
-.exercise-info {
-    text-align: center;
-    margin-bottom: 20px;
+    font-size: 48px;
 }
 
 #exerciseTitle {
-    font-size: 28px;
-    margin-bottom: 10px;
+    margin-top: 200px;
 }
 
-#timer, #reminder {
-    font-size: 18px;
-    margin-bottom: 5px;
-}
 
-.view {
-    text-align: center;
-}
-
-.twod {
-    max-width: 100%;
-    height: auto;
-    border: 2px solid #333;
-    border-radius: 5px;
-}
-
-/* Footer styles */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    font-size: 14px;
-}
+/* Exercise section styles */
